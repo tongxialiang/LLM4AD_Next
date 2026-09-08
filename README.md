@@ -28,6 +28,10 @@
   </a>
 </p>
 
+<p align="center">
+  <strong>English</strong> | <a href="./README_zh.md">中文</a>
+</p>
+
 ---
 
 <p align="center">
@@ -38,6 +42,8 @@
 
 ## 🔥 News
 
+- 🧮 [2026.09][New Dataset]: The **[AlphaEvolve Mathematics Benchmark Suite](examples/applications/alphaevolve_math_benchmark/README.md)** adds 11 independently runnable mathematical optimization cases, case-local evaluators, evolved implementations, and reusable experience artifacts.
+- 🏝️ [2026.09][New Search Method]: **Diverse Island GA** is now available, assigning a continuous spectrum of exploitation, correction, and independent-exploration behaviors across any number of islands while coordinating migration and memory use.
 - 🔬 [2026.07][New Feature]: **Search methods migrated** — EoH, MEoH, ReEvo, and MCTS-AHD are now available as standalone orchestrators. See [Search Methods](#search-methods-automatic-heuristic-design).
 - 🧠 [2026.07][New Feature]: **[MindMemOS](https://github.com/dadastory/MindMemOS)-backed long-term memory** is now available, with global, project, and task memory scopes plus configurable Chat and Embedding model bindings. See the [Memory Guide](docs/en/guides/memory.md).
 - 🚀 [2026.07][New Release]: **LLM4AD_Next Online Trial** is now available at [https://llm4ad-next.cn/](https://llm4ad-next.cn/) — try the full problem-to-algorithm workflow directly in your browser with no local setup.
@@ -74,12 +80,12 @@ Migration status of the Automatic Heuristic Design (AHD) search methods from the
 | Method | Status | Method | Status |
 |--------|--------|--------|--------|
 | **IslandGA** | ✅ Available | **FunSearch** | ⏳ Pending |
-| **MEoH** | ✅ Available | **HillClimb** | ⏳ Pending |
-| **DyCA** | ✅ Available | **LHNS** | ⏳ Pending |
-| **EoH** | ✅ Available | **LLaMEA** | ⏳ Pending |
-| **ReEvo** | ✅ Available | **MLES** | ⏳ Pending |
-| **MCTS-AHD** | ✅ Available | **MOEA/D** | ⏳ Pending |
-| | | **NSGA-II** | ⏳ Pending |
+| **Diverse Island GA** | ✅ Available | **HillClimb** | ⏳ Pending |
+| **MEoH** | ✅ Available | **LHNS** | ⏳ Pending |
+| **DyCA** | ✅ Available | **LLaMEA** | ⏳ Pending |
+| **EoH** | ✅ Available | **MLES** | ⏳ Pending |
+| **ReEvo** | ✅ Available | **MOEA/D** | ⏳ Pending |
+| **MCTS-AHD** | ✅ Available | **NSGA-II** | ⏳ Pending |
 | | | **PartEvo** | ⏳ Pending |
 | | | **RandSample** | ⏳ Pending |
 
@@ -89,8 +95,24 @@ Set `evolution.type` in your config and run `llm4ad run <config.yaml>`. See `exa
 
 ```yaml
 evolution:
-  type: "eoh"  # options: "eoh", "meoh", "reevo", "mcts_ahd", "island_ga", "dyca"
+  type: "eoh"  # options include "diverse_island_ga", "island_ga", "eoh", "meoh", "reevo", "mcts_ahd", "dyca"
 ```
+
+## 🏆 Featured Cases
+
+### [AlphaEvolve Mathematics Benchmark](examples/applications/alphaevolve_math_benchmark/README.md)
+
+| Case (↑ Max · ↓ Min) | LLM4AD Next | Published Results | Artifacts |
+| --- | ---: | --- | --- |
+| 26 circles in a unit square ↑ | **`2.6359830833`**<br>Δ `+1.21e-7` | AlphaEvolve `2.6358627564`<br>LoongFlow `2.6359829625` | [Code](examples/applications/alphaevolve_math_benchmark/circle_packing/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/circle_packing/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/circle_packing/results/best/result.json) |
+| 21 circles in a perimeter-four rectangle ↑ | **`2.3658323757`**<br>Δ `+1.46e-7` | AlphaEvolve `2.3658321334`<br>LoongFlow `2.3658322295` | [Code](examples/applications/alphaevolve_math_benchmark/circle_rectangle/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/circle_rectangle/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/circle_rectangle/results/best/result.json) |
+| 11 unit hexagons in a regular hexagon ↓ | **`3.9246884168`**<br>Δ `+0.00421844` | AlphaEvolve `3.930092`<br>LoongFlow `3.9289068555` | [Code](examples/applications/alphaevolve_math_benchmark/hexagon_packing/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/hexagon_packing/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/hexagon_packing/results/best/result.json) |
+| 16-point maximum/minimum distance ratio ↓ | **`12.8892299077`**<br>Δ `+1.36e-5` | AlphaEvolve `12.8892661120`<br>LoongFlow `12.8892435472` | [Code](examples/applications/alphaevolve_math_benchmark/max_min_distance_ratio/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/max_min_distance_ratio/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/max_min_distance_ratio/results/best/result.json) |
+| Uncertainty inequality ↓ | **`0.352099104419`**<br>Δ `+2.68e-12` | AlphaEvolve `0.352099104423`<br>LoongFlow `0.352099104422` | [Code](examples/applications/alphaevolve_math_benchmark/uncertainty_inequality/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/uncertainty_inequality/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/uncertainty_inequality/results/best/result.json) |
+| Second autocorrelation inequality ↑ | **`0.9053043553`**<br>Δ `+0.00260225` | AlphaEvolve `0.8962799442`<br>LoongFlow `0.9027021077` | [Code](examples/applications/alphaevolve_math_benchmark/second_autocorrelation/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/second_autocorrelation/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/second_autocorrelation/results/best/result.json) |
+| First autocorrelation inequality ↓ | **`1.5074598117`**<br>Δ `-0.00216584` | AlphaEvolve `1.5052939684`<br>LoongFlow `1.5095273149` | [Code](examples/applications/alphaevolve_math_benchmark/first_autocorrelation/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/first_autocorrelation/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/first_autocorrelation/results/best/result.json) |
+| Minimum overlap ↓ | **`0.3809250447`**<br>Δ `-1.13e-5` | AlphaEvolve `0.380924`<br>LoongFlow `0.3809137564` | [Code](examples/applications/alphaevolve_math_benchmark/minimum_overlap/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/minimum_overlap/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/minimum_overlap/results/best/result.json) |
+| Heilbronn problem in an equilateral triangle ↑ | **`0.0365298881928`**<br>Δ `-1.69e-9` | AlphaEvolve `0.0365298898800`<br>LoongFlow `0.0365298898793` | [Code](examples/applications/alphaevolve_math_benchmark/heilbronn_triangle/results/best/solve.py) · [Experience](examples/applications/alphaevolve_math_benchmark/heilbronn_triangle/results/best/experiences/README.md) · [Result](examples/applications/alphaevolve_math_benchmark/heilbronn_triangle/results/best/result.json) |
 
 ## Quick Start
 
@@ -151,7 +173,7 @@ evolution:
 </div>
 
 
-## Run LLM4AD
+## Run LLM4AD Next
 
 ### Option A: Online Demo (No Installation Required)
 
@@ -265,6 +287,10 @@ ruff check src/ tests/ --fix
 
 This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICENSE) file for details.
 
+## Acknowledgements
+
+The AutoResearch module is based on / adapted from [AutoResearchClaw](https://github.com/aiming-lab/AutoResearchClaw) (MIT License). Its original copyright and license notice are retained in [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md).
+
 ## Support
 
 - [Documentation](docs/en/index.md)
@@ -276,7 +302,7 @@ This project is licensed under the BSD 3-Clause License - see the [LICENSE](LICE
 Scan the QR code with WeChat to join the LLM4AD_Next community group.
 
 <div align="center">
-  <img src="docs/assets/live-qr.png"
+  <img src="docs/assets/live-qr-20260908-033549.png"
        alt="LLM4AD_Next WeChat community QR code"
        width="220">
 </div>
